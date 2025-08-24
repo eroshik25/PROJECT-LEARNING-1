@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Email </title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("fp_hfa1oHR5zkoyq8");
+    })();
+  </script>
+
+  <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+        background:radial-gradient(grey,white);
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .setup {
+        width: 100%;
+        max-width: 350px;
+        background-color: rgba(15, 15, 15, 0.1); 
+        padding: 2em;
+        border-radius: 10px;
+        border: 1px solid rgba(17, 17, 17, 0.2);
+        box-shadow: 0 0 15px rgba(19, 18, 18, 0.3);
+      }
+
+      h2 {
+        text-align: center;
+        color: white;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+      }
+
+      .input {
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        color:black;
+        font-size: 14px;
+        cursor:text;
+        caret-color: black;
+        outline: none;
+      }
+
+      textarea {
+        resize: none;
+        height: 80px;
+      }
+
+      textarea::placeholder {
+        color: white;
+        font-size: 12px;
+      }
+
+      label {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 12px;
+        pointer-events: none;
+        transition: 0.3s ease-in-out;
+      }
+
+      input:focus ~ label,
+      input:valid ~ label{
+        top: -5%;
+        font-size: 10px;
+      }
+
+      .button {
+        display: flex;
+        justify-content: center;
+      }
+
+      button {
+        width: 60%;
+        padding: 10px;
+        border: none;
+        border-radius: 25px;
+        background-color: lightgrey;
+        color: black;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: 0.3s ease;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: white;
+        font-weight: bold;
+        box-shadow: 0 0 10px white,0 0 10px white;
+      }
+
+       @media screen and (max-width: 720px) {
+        body {
+          padding: 10px;
+          background-position: center 
+        }
+
+        .setup {
+          width: 80%;
+          padding: 1em;
+        }
+
+        h2 {
+          font-size: 15px;
+        }
+
+        input,
+        textarea {
+          font-size: 14px;
+        }
+
+        button {
+          width: 40%;
+        }
+      } 
+    </style>
+  
+</head>
+
+
+<body>
+  <form class="setup">
+    <br>
+    <h2>Contact Us</h2>
+
+    <div class="input">
+      <input type="text" name="name" id="name" required />
+      <label for=""> Name*</label>
+    </div>
+
+    <div class="input">
+      <input type="email" name="email" id="email" required />
+      <label for="">Email*</label>
+    </div>
+
+    <div class="input">
+      <input type="text" name="subject" id="subject" required />
+      <label for="">Subject*</label>
+    </div>
+
+    <div class="input">
+      <textarea name="text2" id="message" cols="50" rows="25" placeholder="Message yourself*" required></textarea>
+    </div>
+
+    <div class="button">
+      <button type="submit" onclick="sendEmail()">send</button>
+    </div>
+
+  </form>
+
+  <script>
+    document
+      .querySelector(".setup")
+      .addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form from refreshing
+
+        let parms = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          subject: document.getElementById("subject").value,
+          message: document.getElementById("message").value,
+        };
+
+        // Send the email via EmailJS
+        emailjs.send("service_t4ztk8b", "template_51zvxce", parms).then(
+          function (response) {
+            alert("Email Sent!");
+            document.querySelector(".setup").reset(); // Clear the form
+          },
+          function (error) {
+            alert("Failed to send email: " + error.text);
+          }
+        );
+      });
+  </script>
+</body>
+
+</html>

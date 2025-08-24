@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <script>
+        function add(event) {
+            event.preventDefault();
+            const num1 = Number(document.getElementById("number1").value);
+            const num2 = Number(document.getElementById("number2").value);
+            const result = num1 + num2;
+            document.getElementById("output").innerHTML = `The sum of ${num1} and ${num2} is ${result}`;
+        }
+
+        function sub(event) {
+            event.preventDefault();
+            const num1 = Number(document.getElementById("number1").value);
+            const num2 = Number(document.getElementById("number2").value);
+            const result = num1 - num2;
+            document.getElementById("output").innerHTML = `The difference between ${num1} and ${num2} is ${result}`;
+        }
+
+        function multiply(event) {
+            event.preventDefault();
+            const num1 = Number(document.getElementById("number1").value);
+            const num2 = Number(document.getElementById("number2").value);
+            const result = num1 * num2;
+            document.getElementById("output").innerHTML = `The product of ${num1} and ${num2} is ${result}`;
+        }
+
+        function divide(event) {
+            event.preventDefault();
+            const num1 = Number(document.getElementById("number1").value);
+            const num2 = Number(document.getElementById("number2").value);
+            if (num2 === 0) {
+                document.getElementById("output").innerHTML = "Cannot divide by zero.";
+            } else {
+                const result = num1 / num2;
+                document.getElementById("output").innerHTML = `The division of ${num1} by ${num2} is ${result}`;
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: linear-gradient(to right, white, whitesmoke);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        form {
+            width: 200px;
+            height: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: lightblue;
+            box-shadow: 5px 5px 10px skyblue;
+            text-align: center;
+            border: 1px solid white;
+            transition: border 2s ease-in-out;
+        }
+
+        input {
+            width: 55%;
+            height: 30px;
+            border-radius: 7px;
+            border: none;
+            background-color: white;
+            outline: none;
+            font-weight: bold;
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+
+        button {
+            width: 30%;
+            height: 30px;
+            margin: 5px 5px;
+            border-radius: 10px;
+            border: none;
+            background-color: lightblue;
+            cursor: pointer;
+        }
+
+        form:hover {
+            border: 1px solid skyblue;
+            box-shadow: 5px 5px 10px skyblue;
+        }
+
+        button:hover {
+            background-image: linear-gradient(to right, skyblue, white);
+            box-shadow: 8px 0 10px whitesmoke;
+            font-weight: bold;
+            text-shadow: 1px 1px 10px black;
+            border: 0.1px solid white;
+
+        }
+
+        input:hover {
+            box-shadow: 2px 2px 10px whitesmoke;
+            font-weight: bold;
+        }
+
+        h2:hover {
+            font-size: 25px;
+            font-weight: bold;
+            cursor: none;
+            text-shadow: 2px 2px 10px black;
+
+        }
+
+        strong {
+            color: black;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="Calculator">
+        <h2> Calculator</h2>
+        <input class="input" type="number" id="number1" placeholder="Num 1*" required><br>
+        <input class="input" type="number" id="number2" placeholder="Num 2*" required><br>
+        <button class="button" onclick="add(event)">ADD</button>
+        <button class="button" onclick="sub(event)">SUB</button><br>
+        <button class="button" onclick="multiply(event)">MULT</button>
+        <button class="button" onclick="divide(event)">DIV</button>
+        <div class="result">
+            <strong id="output"></strong>
+        </div>
+    </form>
+</body>
+
+</html>
