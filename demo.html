@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BG-filter</title>
+</head>
+<body>
+
+    <div class="div">
+        <nav class="d1">
+           <p>Lorem ipsum  consectetur adipisicing elit.</p>
+        </nav>
+    </div>
+    
+</body>
+<style>
+
+    *{
+        padding: 0%;
+        margin: 0%;
+        box-sizing: border-box;
+    }
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-image: url("waterfall.png.jpg");
+        width: 500px;
+        height: 500px;
+    }
+    nav{
+        width: 200px;
+        height: 200px;
+         backdrop-filter: blur(1px);
+        border-radius: 20px;
+        border: 0.1px solid white;
+    }
+    p{
+        width: 100px;
+        height: 100px;
+        backdrop-filter: blur(10px);
+        font-size: 10px;
+        border: 1.5px solid wheat;
+        border-radius:10px ;
+        align-items: center;
+        position: relative;
+        top: 25%;
+        left: 25%;
+        padding: 30px 20px;
+
+    }
+</style>
+</html>
